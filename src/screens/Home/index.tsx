@@ -8,6 +8,7 @@ import {ButtonAdd} from '../../components/ButtonAdd'
 import {CategorySelect} from '../../components/CategorySelect'
 import {ListHeader} from '../../components/ListHeader'
 import {Appointment} from '../../components/Appointment'
+import {ListDivider} from '../../components/ListDivider'
 
 export function Home() {
 	const [category, setCategory] = useState('')
@@ -15,6 +16,19 @@ export function Home() {
 	const appointments = [
 		{
 			id: '1',
+			guild: {
+				id: '1',
+				name: 'Legends',
+				icon: null,
+				owner: true
+			},
+			category: '1',
+			date: '06/22 at 08:40pm',
+			description:
+				'asiodjas asoid ajsoiashc aosi aoiascoasj casuc scna sasho ixj'
+		},
+		{
+			id: '2',
 			guild: {
 				id: '1',
 				name: 'Legends',
@@ -45,12 +59,16 @@ export function Home() {
 			/>
 
 			<View style={styles.content}>
-				<ListHeader title="Scheduled matches" subtitle="total 6" />
+				<ListHeader
+					title="Scheduled matches"
+					subtitle={`Total ${appointments.length}`}
+				/>
 
 				<FlatList
 					data={appointments}
 					keyExtractor={item => item.id}
 					renderItem={({item}) => <Appointment data={item} />}
+					ItemSeparatorComponent={() => <ListDivider />}
 					style={styles.matches}
 					showsVerticalScrollIndicator={false}
 				/>
